@@ -9,7 +9,12 @@ app.use(express.static(PUBLIC));
 
 app.get('/', (req, res) => {
     console.log('Loading Home...');
-    res.sendFile(path.join(PUBLIC,'index.html'));
+    res.sendFile(path.join(PUBLIC,'home.html'));
+});
+
+app.get('/contactus', (req, res) => {
+    console.log('Loading Contact Us...')
+    res.sendFile(path.join(PUBLIC,'contactus.html'));
 });
 
 app.post('/contactus', (req, res) => {
@@ -23,7 +28,7 @@ app.post('/contactus', (req, res) => {
                 '\nEmail: ' + email + 
                 '\nSubject: ' + subject);
 
-    res.send('Data received👌');
+    res.redirect('/');
 });
 
 app.listen(PORT, () => {
